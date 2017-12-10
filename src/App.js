@@ -12,7 +12,7 @@ class App extends Component {
         {
           id: uuid.v4(),
           name: 'Make breakfast',
-          status: 0,
+          status: 1,
         },
         {
           id: uuid.v4(),
@@ -40,6 +40,17 @@ class App extends Component {
     this.setState({ tasks: tasks });
   }
 
+  handleCompletedTask(id) {
+    const tasks = this.state.tasks;
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.status = 1;
+      }
+      return task;
+    });
+    this.setState({ tasks: updatedTasks });
+  }
+
   render() {
     return (
       <div className="App">
@@ -50,7 +61,11 @@ class App extends Component {
             <p>Testing out ReactJS</p>
         </div>
         <AddTodoItem addTask={this.handleAddTask.bind(this)} />
-        <TodoList tasks={this.state.tasks} onDelete={this.handleDeleteTask.bind(this)} />
+        <TodoList
+          tasks={this.state.tasks}
+          onDelete={this.handleDeleteTask.bind(this)}
+          onDone={this.handleCompletedTask.bind(this)}
+        />
       </div>
     );
   }

@@ -30,3 +30,17 @@ button.addTaskBtn {
   color: white;
   font-weight: bold;
 }
+
+.task {
+  margin: 10px;
+  padding: 5px;
+  list-style: none;
+}
+
+.task button {
+  margin: 0 10px;
+}
+
+.task.completed {
+  background-color: lightgreen;
+}
